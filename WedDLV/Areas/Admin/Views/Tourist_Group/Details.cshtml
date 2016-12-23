@@ -1,0 +1,92 @@
+﻿@model Entity.Framework.Tourist_Group
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var Customers = (List<Entity.Framework.Customer>)ViewBag.Customers;
+}
+
+<h2>Chi Tiết</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Đoàn Du Lịch</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Mã Đoàn</th>
+                        <th>Tên Đoàn</th>
+                        <th>Chương trình tham quan</th>
+                        <th>Ngày khởi hành</th>
+                        <th>Phương tiện</th>
+                    </tr>
+                </thead>
+                <tbody>                   
+                        <tr class="odd gradeX">
+                            <td>@Model.Madoan</td>
+                            <td>@Model.Tendoan</td>
+                            <td>@Model.Chuongtrinhthamquan</td>
+                            <td>@Model.Ngaykhoihanh</td>
+                            <td>@Model.Phuongtien</td>
+                        </tr>
+                </tbody>
+            </table>
+            <!-- /.table-responsive -->
+        </div>
+</div>
+    <h4>Danh Sách Khách Hàng Của Đoàn</h4>
+<div class="panel-body">
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        @if (DateTime.Compare(Convert.ToDateTime(@Model.Ngaykhoihanh), DateTime.Today) >= 0)
+        {
+            <a href="/Admin/Tourist/Add/@Model.Madoan">Thêm Hành Khách..</a>
+        }
+        <thead>
+            <tr>
+                @if (DateTime.Compare(Convert.ToDateTime(@Model.Ngaykhoihanh), DateTime.Today) >= 0)
+                {
+                    <th></th>
+                }
+                <th>Mã Khách Hàng</th>
+                <th>Tên Tên Khách Hàng</th>
+                <th>Địa chỉ</th>
+                <th>Giới Tính</th>
+                <th>Số Điện Thoại</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Customers)
+            {
+                <tr class="odd gradeX">
+                    @if (DateTime.Compare(Convert.ToDateTime(@Model.Ngaykhoihanh), DateTime.Today) >= 0)
+                    {
+                        <td>
+                            <a href="/Admin/Tourist/Delete/@Model.Madoan?Makhachhang=@item.Makhachhang">Xóa</a>
+                        </td>
+                    }
+                    
+                    <td>@item.Makhachhang</td>
+                    <td>@item.Tenkhachhang</td>
+                    <td>@item.Diachi</td>
+                    <td>@item.Gioitinh</td>
+                    <td>@item.Sodienthoai</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+    <!-- /.table-responsive -->
+</div>
+<!-- /.panel-body -->     
+
+}
+<div>
+    @Html.ActionLink("Quay Trở Lại", "Index")
+</div>
+

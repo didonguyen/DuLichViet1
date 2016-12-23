@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Entity.Province>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tỉnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tentinh)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Matinh }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Matinh }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Matinh })
+        </td>
+    </tr>
+}
+
+</table>

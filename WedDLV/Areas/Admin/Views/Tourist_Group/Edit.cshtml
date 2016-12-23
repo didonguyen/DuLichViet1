@@ -1,0 +1,117 @@
+﻿@model Entity.Framework.Tourist_Group
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var Tours = (List<Entity.Framework.Tour>)ViewBag.Tour;
+}
+
+<h2>Sửa Thông Tin</h2>
+
+@using (Html.BeginForm("Edit","Tourist_Group",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Đoàn Du Lịch</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Madoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Madoan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Madoan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tendoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Tendoan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tendoan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Matour, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="Matour" onchange="LoadChiTietTour(this)">
+                    <option disabled="disabled" selected="selected">Chọn Tour</option>
+                    @foreach (var item in Tours)
+                    {
+                        <option value="@item.Matour">@item.Tentour</option>
+                    }
+                </select>
+                <script>
+                    function LoadChiTietTour(ele)
+                    {
+                        $.ajax({
+                            url: "/Admin/Tourist_Group/AjaxLoadTourById",
+                            type: "get",
+                            data: { 'id': $(ele).val() },
+                            success: function (data) {
+                                var CT = $.parseJSON(data);
+                                var date = Number((CT[0].Ngaykhoihanh.replace('/Date(', '')).replace(')/', ''));
+                                var temp_date = new Date(date);
+                                var Ngaykhoihanh = (temp_date.getMonth() + 1) + '/' + temp_date.getDate() + '/' + temp_date.getFullYear();
+                                var date1 = Number(CT[0].Thoigian.substr(0, 1)) * 86400000 + date;
+
+                                var temp_date1 = new Date(date1);
+                                var Ngayketthuc = (temp_date1.getMonth() + 1) + '/' + temp_date1.getDate() + '/' + temp_date1.getFullYear();
+                                $('#Ngaykhoihanh').val(Ngaykhoihanh);
+                                $('#Ngayketthuc').val(Ngayketthuc);
+                                $('#Phuongtien').val(CT[0].Phuongtien);
+
+                            }
+
+                        });
+                    }
+                </script>
+                @*@Html.TextBoxFor(model => model.Matour, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Matour, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ngaykhoihanh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Ngaykhoihanh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ngaykhoihanh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ngayketthuc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Ngayketthuc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ngayketthuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phuongtien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Phuongtien, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phuongtien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Chuongtrinhthamquan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Chuongtrinhthamquan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Chuongtrinhthamquan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập Nhật" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay Trở Lại", "Index")
+</div>

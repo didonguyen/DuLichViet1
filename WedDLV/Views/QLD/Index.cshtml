@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Entity.Tourist_Group>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Tour
+        </th>
+        <th>
+            Tên Đoàn
+        </th>
+        <th>
+            Chương trình tham quan
+        </th>
+        <th>
+            Ngày khởi hành
+        </th>
+        <th>
+            Ngày kết thúc
+        </th>
+        <th>
+            Phương tiện
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tour.Tentour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tendoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chuongtrinhthamquan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaykhoihanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngayketthuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phuongtien)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Madoan }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Madoan }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Madoan })
+        </td>
+    </tr>
+}
+
+</table>

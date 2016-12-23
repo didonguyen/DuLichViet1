@@ -1,0 +1,47 @@
+﻿@model Entity.Framework.Customer
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var Madoan = (string)ViewBag.Madoan;
+    var Customers= (List<Entity.Framework.Customer>)ViewBag.Customer;
+}
+
+<h2>Add New Customer For @Madoan</h2>
+@using (Html.BeginForm("Add1","Tourist", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            
+            @Html.LabelFor(model => Madoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => Madoan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Madoan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+     </div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tenkhachhang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="Makhachhang" onchange="LoadChiTietTour(this)">
+                    <option disabled="disabled" selected="selected">Chọn Khách Hàng</option>
+                    @foreach (var item in Customers)
+                    {
+                        <option value="@item.Makhachhang">@item.Tenkhachhang</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add" class="btn btn-default" />
+        </div>
+    </div>
+}

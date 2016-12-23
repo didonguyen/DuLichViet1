@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Đoàn Du Lịch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Tour
+        </dt>
+
+        <dd>
+            @ViewBag.Name
+        </dd>
+
+        <dt>
+            Tên Đoàn
+        </dt>
+
+        <dd>
+
+        </dd>
+
+        <dt>
+            CT tham quan
+        </dt>
+
+        <dd>
+            
+        </dd>
+
+        <dt>
+            Ngày Khởi hành
+        </dt>
+
+        <dd>
+            
+        </dd>
+
+        <dt>
+            Ngày Kết thúc
+        </dt>
+
+        <dd>
+            
+        </dd>
+
+        <dt>
+            Phương Tiện
+        </dt>
+
+        <dd>
+            
+        </dd>
+
+        <dt>
+            DS Khách Hàng
+        </dt>
+        <dd></dd>
+        <dt>
+            Tên Khách Hàng
+        </dt>
+
+        <dd>
+            @foreach(var item in ViewBag.DS)
+            {
+                
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = ViewBag.TG.Madoan }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

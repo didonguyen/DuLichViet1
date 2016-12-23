@@ -1,0 +1,17 @@
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\FormDLV.exe.config
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\FormDLV.exe
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\FormDLV.pdb
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\EntityFramework.dll
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\EntityFramework.xml
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\obj\Debug\FormDLV.Form1.resources
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\obj\Debug\FormDLV.Properties.Resources.resources
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\obj\Debug\FormDLV.csproj.GenerateResource.Cache
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\obj\Debug\FormDLV.exe
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\obj\Debug\FormDLV.pdb
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\BUS.dll
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\Entity.dll
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\BUS.pdb
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\bin\Debug\Entity.pdb
+c:\users\nguyen\documents\visual studio 2015\Projects\DuLichViet\FormDLV\obj\Debug\FormDLV.csprojResolveAssemblyReference.cache
